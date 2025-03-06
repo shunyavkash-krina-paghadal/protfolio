@@ -1,0 +1,110 @@
+@media (max-width: 1399px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+@media (max-width: 1199px) {
+  .container {
+    max-width: 1140px;
+  }
+  main .container .gallery {
+    column-count: 2 !important;
+  }
+  main .container .gallery .projects-items a img {
+    width: 550px !important;
+  }
+  main .pricing .pricing-form {
+    width: 800px;
+  }
+}
+@media (max-width: 991px) {
+  .container {
+    max-width: 720px;
+  }
+  .col-md-6 {
+    width: 50%;
+  }
+  .col-md-12 {
+    width: 100% !important;
+  }
+  header {
+    padding: 25px 20px;
+  }
+  header .social-icon .toggle {
+    display: block;
+  }
+  header nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: black;
+    display: none;
+    z-index: 9;
+  }
+  header nav ul {
+    flex-direction: column;
+  }
+  header nav ul li {
+    margin: 10px 20px;
+  }
+  header nav ul li a {
+    color: white;
+  }
+  main .services .col-6 .services-item {
+    padding: 70px 0 0 15px;
+  }
+  main .work .container .col-4 .work-title p {
+    padding-bottom: 20px;
+  }
+  main .pricing .pricing-form {
+    width: 700px;
+  }
+  footer .col-6 .footer-content {
+    padding-bottom: 30px;
+  }
+  footer .col-3 .phone {
+    padding-bottom: 30px;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    max-width: 540px;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
+  main .services .col-6 .services-items .col-6:nth-child(2) .services-img {
+    padding-bottom: 30px;
+  }
+  main .photo .photo-inner {
+    height: 340px;
+  }
+  main .photo .photo-inner h2 {
+    font-size: 40px;
+  }
+  main .pricing {
+    height: 750px;
+  }
+  main .pricing .pricing-form {
+    width: 550px;
+    padding: 50px;
+  }
+  main .protfolio .container .gallery {
+    column-count: 1 !important;
+  }
+  main .protfolio .container .gallery .projects-items a img {
+    width: 560px !important;
+  }
+}
+@media (max-width: 575px) {
+  .container {
+    max-width: 100%;
+  }
+  main .pricing .pricing-form {
+    width: 500px;
+    padding: 40px;
+  }
+}
+
+/*# sourceMappingURL=media.css.map */

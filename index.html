@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="font/raleway/stylesheet.css" type="text/css" />
+  <link rel="stylesheet" href="font/fonts/remixicon.css" type="text/css" />
+  <link rel="stylesheet" href="font/icomoon/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/media.css" type="text/css" />
+  <style>
+    :root {
+      --theme-blue: rgb(20 157 221);
+      --theme-light-bule: #f4fafd;
+      --theme-light-black: #292524;
+      --theme-gray: #7d7e85;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      width: 5px;
+      background-color: #aaaaaa;
+      border-radius: 5px;
+    }
+
+    img {
+      object-fit: cover;
+    }
+
+    header,
+    main,
+    footer {
+      width: 80%;
+      margin-left: auto;
+      transition: 0.4s all;
+    }
+
+    /* LOADER */
+
+    .loader {
+      width: 70px;
+      height: 70px;
+      border: 6px solid aliceblue;
+      border-radius: 50%;
+      border-top: 6px solid var(--theme-blue);
+      border-bottom: 6px solid var(--theme-blue);
+      animation: loader 0.5s infinite linear;
+    }
+
+    .overlay {
+      background-color: aliceblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9;
+    }
+
+    @keyframes loader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .work-inner h2 ,.about-title h2 ,.skills h2 ,.resume h2 , .resume-item h3 , .portfolio h2 ,.contact h2{
+            transition: 0.4s all ease-in-out;
+            cursor: pointer;
+          }
+    .work-inner h2:hover ,.about-title h2:hover ,.skills h2:hover , .resume h2:hover , .resume-item h3:hover , .portfolio h2:hover ,.contact h2:hover{
+      color: var(--theme-blue);
+      transition: 0.4s all ease-in-out;
+    }
+    .toggle {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+
+    .toggle i {
+      padding: 10px 10px;
+      background-color: var(--theme-blue);
+      border-radius: 50%;
+    }
+
+    .side {
+      transform: translateX(-100%);
+    }
+
+    .side-1 {
+      width: 100%;
+    }
+
+    /* ASIDE */
+
+    aside {
+      width: 20%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow-y: scroll;
+      transition: 0.4s all;
+    }
+
+    aside img {
+      border: 8px solid var(--theme-light-black);
+    }
+
+    aside .lister li a {
+      background-color: var(--theme-light-black);
+    }
+
+    aside .lister li:hover a{
+      background-color: var(--theme-blue);
+      transition: 0.3s;
+    }
+
+    aside ul li a {
+      color: #737675;
+    }
+
+    aside ul:last-child li:hover a{
+      color:white;
+      transition: 0.3s;
+    }
+    aside ul:last-child li:hover a i{
+      color:var(--theme-blue);
+      transition: 0.3s;
+    }
+
+    .slide-1 {
+      width: 100%;
+    }
+
+    /* BANNER */
+
+    .banner {
+      background: url(img/krina-1.jpg), rgba(0, 0, 0, 0.9);
+      width: 100%;
+      height: 830px;
+      background-size: cover;
+      background-blend-mode: darken;
+      display: flex;
+      align-items: center;
+    }
+
+    .banner-content h1 {
+      font-size: 50px;
+    }
+
+    .banner-content h3{
+      margin-bottom: 30px;
+    }
+
+    .banner a{
+      padding: 10px 15px;
+      background-color: var(--theme-blue);
+      border-radius:3px;
+    }
+
+    .banner a {
+      background-color: var(--theme-light-black);
+    }
+
+    .banner a:hover {
+      background-color: var(--theme-blue);
+      transition: 0.4s all;
+    }
+
+    /* ABOUT */
+
+    .about {
+      padding: 60px 0;
+    }
+
+    .about-title h2::before,
+    .skills h2::before,
+    .resume h2::before,
+    .portfolio h2::before,
+    .contact-title h2::before {
+      content: "";
+      width: 58px;
+      height: 3px;
+      background-color: var(--theme-blue);
+      position: absolute;
+      top: 100%;
+      margin-top: 14px;
+    }
+
+    /* SKILLS */
+
+    .skills,
+    .portfolio {
+      background-color: var(--theme-light-bule);
+      padding: 60px 0;
+    }
+
+    /* RESUME */
+
+    .resume-item::before {
+      content: "";
+      width: 2px;
+      height: 140px;
+      background-color: var(--theme-blue);
+      position: absolute;
+      top: 60px;
+    }
+
+    .resume-item::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50px;
+      left: -7px;
+      top: 51px;
+      background: white;
+      border: 2px solid var(--theme-blue);
+    }
+
+    .resume-item h3 {
+      color: #737675;
+    }
+
+    /* PORTFOLIO */
+
+    .port-icon a {
+      background-color: var(--theme-blue);
+      padding: 6px 8px;
+    }
+
+    .portfolio-item {
+      margin-bottom: 30px;
+    }
+
+    /* CONTECT */
+
+    .contact-us {
+      background-color: white;
+      height: 540px;
+    }
+
+    .contact {
+      padding: 60px 0;
+    }
+
+
+    .ri-map-pin-line:before,
+    .ri-phone-line:before,
+    .ri-mail-line:before,
+    .ri-earth-line:before {
+      padding: 12px;
+      color: var(--theme-blue);
+      background-color: #dee7eb;
+      border-radius: 50%;
+    }
+
+    .contact-us a span {
+      background-color: var(--theme-blue);
+
+    }
+
+    .contact .contact-item:hover .ri-map-pin-line:before,.contact .contact-item:hover .ri-phone-line:before,.contact .contact-item:hover .ri-earth-line:before,.contact .contact-item:hover .ri-mail-line:before{
+      background-color: var(--theme-blue);
+      color:white;
+      transition: 0.5s;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background-color: #f4fafd;
+      padding: 30px 0;
+    }
+
+    /* BACK-TO-TOP */
+
+    .back-to-top {
+      position: fixed;
+      z-index: 9;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--theme-blue);
+      padding: 9px 12px;
+      border-radius: 4px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- LOADER -->
+
+  <div class="overlay">
+    <div class="loader"></div>
+  </div>
+
+  <!-- ASIDEBAR -->
+
+  <aside class="bg-black">
+    <div class="text-center">
+      <img src="img/krina-1.jpg" title="logo" alt="logo" width="110px" height="110px"
+        class="rounded-circle object-fit-cover" />
+    </div>
+    <a href="javascirpt:void(0)" class="text-center text-decoration-none">
+      <h1 class="text-white fs-4 pt-3">krina paghadal</h1>
+    </a>
+    <ul class="d-flex justify-content-center align-items-center lister my-4 list-unstyled">
+      <li>
+        <a href="javascript:void(0)" class="text-decoration-none mx-1 fs-5 text-white px-2 py-1 rounded-circle"><i
+            class="ri-twitter-fill"></i></a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="text-decoration-none mx-1 fs-5 text-white px-2 py-1 rounded-circle"><i
+            class="ri-facebook-fill"></i></a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="text-decoration-none mx-1 fs-5 text-white px-2 py-1 rounded-circle"><i
+            class="ri-instagram-line"></i></a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="text-decoration-none mx-1 fs-5 text-white px-2 py-1 rounded-circle"><i
+            class="ri-skype-line"></i></a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="text-decoration-none mx-1 fs-5 text-white px-2 py-1 rounded-circle"><i
+            class="ri-linkedin-fill"></i></a>
+      </li>
+    </ul>
+    <ul class="list-unstyled ms-5">
+      <li>
+        <a href="#home" class="text-decoration-none fw-medium text-white d-block text-xl py-3"><i
+            class="ri-home-8-line fs-5 pe-2"></i>Home</a>
+      </li>
+      <li>
+        <a href="#out" class="text-decoration-none fw-medium d-block py-3"><i
+            class="ri-user-line fs-5 pe-2"></i>about-title</a>
+      </li>
+      <li>
+        <a href="#resume" class="text-decoration-none fw-medium text-gray d-block text-xl py-3"><i
+            class="ri-file-3-line pe-2"></i>Resume</a>
+      </li>
+      <li>
+        <a href="#port" class="text-decoration-none fw-medium text-xl d-block py-3"><i
+            class="ri-book-read-line fs-5 pe-2"></i>Portfolio</a>
+      </li>
+      <li>
+        <a href="#con" class="text-decoration-none fw-medium text-xl d-block py-3"><i
+            class="ri-layout-row-line fs-5 pe-2"></i>Contect</a>
+      </li>
+
+    </ul>
+  </aside>
+
+  <!-- HEADER -->
+
+  <header id="top" class="position-absolute end-0 top-0 z-1">
+    <a href="javascript:void(0)" class="text-white text-decoration-none toggle mx-2 my-1 inline-block">
+      <i class="ri-menu-line"></i>
+    </a>
+  </header>
+
+  <main>
+
+    <!-- BANNER -->
+
+    <section class="banner position-relative" id="home">
+      <div class="banner-content ms-2">
+        <h1 class="text-white font-bold">Krina paghadal</h1>
+        <h3 class="text-white pt-3">I'm <span id="typed" class="text-info border-bottom border-info"></span></h3>
+        <a href="Krina paghadal resume (1).png" target="_blank" class="text-decoration-none text-white fs-5">Resume</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="about" id="out">
+      <div class="container">
+        <div class="about-title position-relative">
+          <h2 class="text-4xl font-bold">About</h2>
+        </div>
+        <p class="mb-0 mt-4">As a professional web designer, I have extensive experience with numerous HTML, CSS, and
+          media query projects. Additionally, I am proficient in popular frameworks such as Bootstrap and Tailwind CSS.
+        </p>
+
+        <div class="work pt-5">
+          <div class="row align-items-center">
+            <div class="col-lg-4 col-12">
+              <div class="wrok-img">
+                <img src="img/krina-1.jpg" title="about" alt="about" height="350px" width="100%" class="object-fit-cover" />
+              </div>
+            </div>
+            <div class="col-lg-8 col-12">
+              <div class="work-inner ">
+                <h2 class="text-3xl font-semibold mt-3 mt-lg-0">Web Desginer</h2>
+                <p class="">I possess extensive expertise in HTML, CSS, and media queries, alongside proficiency in
+                  Sass, Bootstrap, Tailwind CSS, jQuery, and other related technologies.</p>
+                <div class="d-lg-flex">
+                  <div class="col-6">
+                    <p class="py-1"><i class="ri-arrow-right-s-line text-blue text-2xl"></i><span
+                        class="fw-semibold pe-2">Birthday:</span>
+                      24 May 2003</p>
+                    <!-- <p class="py-1"><i class="ri-arrow-right-s-line text-blue text-2xl"></i><span
+                        class="fw-semibold pe-2">Website:</span>
+                      www.example.com</p> -->
+                    <p class="py-1"><i class="ri-arrow-right-s-line text-blue text-2xl"></i><span
+                        class="fw-semibold pe-2">Phone:</span>
+                      6351999526</p>
+                    <p class="py-1"><i class="ri-arrow-right-s-line text-blue text-2xl"></i>
+                      <span class="fw-semibold pe-2">City:</span> Surat
+                    </p>
+
+                  </div>
+                  <div class="col-6">
+                    <p class="py-1"><i class="ri-arrow-right-s-line text-blue text-2xl"></i>
+                      <span class="fw-semibold pe-2">Age:</span> 21
+                    </p>
+                    <p class="py-1"><i class="ri-arrow-right-s-line text-blue text-2xl"></i><span
+                        class="fw-semibold pe-2">Degree:</span>
+                      Bachelor Of Commerce</span>
+                    <p class="py-1"><i class="ri-arrow-right-s-line text-blue text-2xl"></i><span
+                        class="fw-semibold pe-2">Email:</span>
+                      shingalaswati2@gmail.com</p>
+                  </div>
+                </div>
+                <p>The information provided above is accurate. If you wish to contact me regarding project
+                  opportunities, please feel free to reach out.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+
+    <section class="skills py-5">
+      <div class="container">
+        <div class="skills-title position-relative">
+          <h2 class="font-bold">Skills</h2>
+        </div>
+        <div class="skills-inner mt-5 mb-2">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="skills-item mb-5">
+                <img src="img/html.png" title="html" alt="html" width="70px" class="inline" />
+                <span class="text-xl">HTML</span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="skills-item mb-5">
+                <img src="img/css.png" title="css" alt="css" width="70px" class="inline" />
+                <span class="text-xl">CSS</span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="skills-item mb-5">
+                <img src="img/bootstap.png" title="bootstrap" alt="bootstrap" width="70px" class="inline" />
+                <span class="text-xl">Bootstrap</span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="skills-item mb-5">
+                <img src="img/media.png" title="media" alt="media" width="70px" class="inline" />
+                <span class="text-xl">Media Qurey</span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="skills-item mb-5">
+                <img src="img/jqurey.png" title="jqurey" alt="jqurey" width="70px" class="inline" />
+                <span class="text-xl">Jqurey</span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="skills-item mb-5">
+                <img src="img/sass.png" title="sass" alt="sass" width="70px" class="inline" />
+                <span class="text-xl">Sass</span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="skills-item mb-5">
+                <img src="img/tailwind.png" title="tailwind" alt="tailwind" width="70px" class="inline" />
+                <span class="text-xl">Tailwind Css</span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="skills-item mb-5">
+                <img src="img/js.png" title="js" alt="js" width="70px" class="inline" />
+                <span class="text-xl">Java Script</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- RESUME -->
+
+    <section class="container" id="resume">
+      <div class="resume position-relative">
+        <h2 class="font-bold my-5">Education</h2>
+
+      </div>
+      <p class="mb-5">Below is a brief overview of my education, detailing where I completed my higher secondary and
+        bachelor's degree.</p>
+      <div class="resume-inner pb-5 row">
+        <div class="col-lg-6 col-12">
+          <div class="resume-title position-relative mb-5">
+            <h3 class="mt-10 mb-3 font-bold">Ganandeep vidhayalay</h3>
+            <div class="resume-item">
+              <h5 class="ms-4 font-semibold">2023</h5>
+              <p class="ms-4 mt-2">I have completed my 12<sup>th</sup> standard Ganandeep Vidhyalaya with good marks.
+              </p>
+              <ul class="ms-4 mt-2">
+                <li>mahalaxmi soctiy nier by my school.</li>
+                <li>Ganandeepvidhayalay@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+          <div class="resume-title position-relative mb-5">
+            <h3 class="mt-10 mb-3 font-bold">Red and White multimedia Education</h3>
+            <div class="resume-item">
+              <h5 class="ms-4 font-semibold">2024</h5>
+              <p class="ms-4 mt-2">
+                Here, I completed a web designing course where I gained proficiency in HTML, CSS, media queries,
+                Bootstrap, Sass, Tailwind CSS, jQuery, and JavaScript.</p>
+              <ul class="ms-4 mt-2">
+                <li>vanmali road near by education in surat.</li>
+                <li>rnwmultimedia@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="resume-title position-relative">
+            <h3 class="mt-10 mb-3 font-bold">Swarrnim Startup & Innovation University</h3>
+            <div class="resume-item">
+              <h5 class="ms-4 font-semibold">2024-2026</h5>
+              <p class="ms-4 mt-2">
+                I have completed my Bachelor of computer application at J.D. Gabani Commerce College, where I gained extensive
+                knowledge in commercial studies and practices.</p>
+              <ul class="ms-4 mt-2">
+                <li>swarnnim@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROTFOLIO -->
+
+    <section class="portfolio" id="port">
+      <div class="container">
+        <div class="position-relative">
+          <h2 class="">Portfolio</h2>
+        </div>
+        <p class="py-4">Below are all the projects I have completed using HTML, CSS, and other related technologies. I
+          have ensured each project is responsive, incorporating frameworks like Bootstrap and Tailwind CSS.
+          Additionally, I have implemented JavaScript and jQuery functionalities where required.</p>
+        <div class="portfolio-inner">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="portfolio-item">
+                <img src="img/pro-6.PNG" title="project-1" alt="project-1" width="100%" height="200px"
+                  class="rounded-top" />
+                <div class="portfolio-contect bg-black text-white d-flex justify-content-between
+                  align-items-center ps-1 rounded-bottom">
+                  <h6 class="mb-0">Consultar</h6>
+                  <div class="port-icon py-2">
+                    <a href="img/pro-6.PNG" class="text-white text-decoration-none rounded">
+                      <i class="ri-eye-line"></i>
+                    </a>
+                    <a href="project/CSS-PROJECT/index.html" class="mx-1 text-white text-decoration-none rounded">
+                      <i class="ri-links-line"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="portfolio-item">
+                <img src="img/pro-5.PNG" title="project-1" alt="project-1" width="100%" height="200px"
+                  class="rounded-top" />
+                <div class="portfolio-contect bg-black text-white d-flex justify-content-between
+                  align-items-center ps-1 rounded-bottom">
+                  <h6 class="mb-0">Consultar</h6>
+                  <div class="port-icon py-2">
+                    <a href="img/pro-6.PNG" class="text-white text-decoration-none rounded">
+                      <i class="ri-eye-line"></i>
+                    </a>
+                    <a href="project/project-1/index.html" class="mx-1 text-white text-decoration-none
+                    rounded">
+                      <i class="ri-links-line"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="portfolio-item">
+                <img src="img/pro-4.PNG" title="project-1" alt="project-1" width="100%" height="200px"
+                  class="rounded-top" />
+                <div class="portfolio-contect bg-black text-white d-flex justify-content-between
+                  align-items-center ps-1 rounded-bottom">
+                  <h6 class="mb-0">Consultar</h6>
+                  <div class="port-icon py-2">
+                    <a href="img/pro-6.PNG" class="text-white text-decoration-none rounded">
+                      <i class="ri-eye-line"></i>
+                    </a>
+                    <a href="project/media-css/index.html" class="mx-1 text-white text-decoration-none
+                    rounded">
+                      <i class="ri-links-line"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="portfolio-item">
+                <img src="img/pro-2.PNG" title="project-1" alt="project-1" width="100%" height="200px"
+                  class="rounded-top" />
+                <div class="portfolio-contect bg-black text-white d-flex justify-content-between
+                  align-items-center ps-1 rounded-bottom">
+                  <h6 class="mb-0">Consultar</h6>
+                  <div class="port-icon py-2">
+                    <a href="img/pro-6.PNG" class="text-white text-decoration-none rounded">
+                      <i class="ri-eye-line"></i>
+                    </a>
+                    <a href="project/admin-panle/index.html" class="mx-1 text-white text-decoration-none rounded">
+                      <i class="ri-links-line"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="portfolio-item">
+                <img src="img/pro-1.PNG" title="project-1" alt="project-1" width="100%" height="200px"
+                  class="rounded-top" />
+                <div class="portfolio-contect bg-black text-white d-flex justify-content-between
+                  align-items-center ps-1 rounded-bottom">
+                  <h6 class="mb-0">Consultar</h6>
+                  <div class="port-icon py-2">
+                    <a href="img/pro-6.PNG" class="text-white text-decoration-none rounded">
+                      <i class="ri-eye-line"></i>
+                    </a>
+                    <a href="project/extra-project/index.html" class="mx-1 text-white text-decoration-none rounded">
+                      <i class="ri-links-line"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="portfolio-item">
+                <img src="img/pro-3.PNG" title="project-1" alt="project-1" width="100%" height="200px"
+                  class="rounded-top" />
+                <div class="portfolio-contect bg-black text-white d-flex justify-content-between
+                  align-items-center ps-1 rounded-bottom">
+                  <h6 class="mb-0">Consultar</h6>
+                  <div class="port-icon py-2">
+                    <a href="img/pro-6.PNG" class="text-white text-decoration-none rounded">
+                      <i class="ri-eye-line"></i>
+                    </a>
+                    <a href="project/teilwind-prt/dist/index.html" class="mx-1 text-white text-decoration-none rounded">
+                      <i class="ri-links-line"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="con">
+      <div class="container">
+        <div class="contact-title position-relative">
+          <h2 class=" font-bold">Contact</h2>
+        </div>
+        <p class="mt-4">my contact information is the information that tells someone how to communicate with you.</p>
+        <div class="contact-inner mt-5">
+          <div class="row">
+            <div class="col-lg-5 col-12">
+              <div class="contact-us mb-lg-0 mb-3 shadow p-4">
+                <h2>Let's chat.</h2>
+                <h2>Tell me about your</h2>
+                <h2 class="mb-5">project.</h2>
+
+                <div class="contact-item d-flex">
+                  <div class="icon mt-2 me-3 d-inline">
+                    <i class="ri-map-pin-line fs-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold">Address</h5>
+                    <p>c-6,gajananad soctiy , yogi chowk , surat.</p>
+                  </div>
+                </div>
+                <div class="contact-item d-flex">
+                  <div class="icon mt-2 me-3 d-inline">
+                    <i class="ri-phone-line fs-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold">Call Me</h5>
+                    <p>7228896552</p>
+                  </div>
+                </div>
+                <div class="contact-item d-flex">
+                  <div class="icon mt-2 me-3 d-inline">
+                    <i class="ri-mail-line fs-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold">Email Me</h5>
+                    <p>paghadalkrina9@gmail.com</p>
+                  </div>
+                </div>
+                <div class="contact-item d-flex">
+                  <div class="icon mt-2 me-3 d-inline">
+                    <i class="ri-earth-line"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold">Live link</h5>
+                    <p>https://www.linkedin.com/notifications/?filter=all</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 col-12">
+              <div class="contact-us shadow px-4 py-3">
+                <form>
+                  <div class="d-flex">
+                    <div class="col-6">
+                      <label>Your Name :-</label>
+                      <input class=" mt-2 form-control" style="width:91.67% !important" />
+                    </div>
+                    <div class="col-6">
+                      <label class="ps-7">Your Email :-</label>
+                      <input class=" mt-2 form-control" />
+                    </div>
+                  </div>
+                  <div class="">
+                    <label class="mt-3">Subject :-</label>
+                    <input class=" mt-2 form-control" />
+                  </div>
+                  <div class="">
+                    <label style="margin-top: 20px;">Message :-</label>
+                    <textarea class=" form-control mt-2 " rows="9"></textarea>
+                  </div>
+                  <a href="javascript:void()"
+                    class="justify-content-center text-decoration-none d-flex text-white mt-4"><span
+                      class="py-2 px-3 rounded-5">Sand Message</span></a>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="py-12 border-top">
+    <div class="d-flex justify-content-center">
+      <p class="mb-0">© Copyright<span class="font-bold"> iPortfolio </span>All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- BACK-TO-TOP -->
+
+  <div class="back-to-top">
+    <a href="#top" class="text-white text-decoration-none rounded">
+      <i class="ri-arrow-up-line"></i>
+    </a>
+  </div>
+
+  <script src="js/jquery-3.7.1.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.8/typed.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+  <script>
+
+    $(window).on('load', function () {
+      $(".overlay").fadeOut(1000);
+    })
+
+    new Typed('#typed', {
+      strings: ['Developer.', 'Designer.'],
+      typeSpeed: 90,
+      delaySpeed: 90,
+      loop: true
+    });
+
+    $("header .toggle").click(function () {
+      $("header,main,footer").toggleClass("side-1");
+      $("aside").toggleClass("side");
+    });
+
+  </script>
+</body>
+
+</html>

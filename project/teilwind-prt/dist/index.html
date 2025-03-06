@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp</script>
+    <title>Document</title>
+    <link rel="stylesheet" href="font/fonts/remixicon.css" type="text/css">
+    <link rel="stylesheet" href="css/slick.css" type="text/css" />
+    <link rel="stylesheet" href="css/theme-switcher.css" type="text/css">
+    <link rel="stylesheet" href="css/slick-theme.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <style>
+        @import url("<link href=" https: //fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">");
+
+            h1 {
+                font-family: 'Roboto', sans-serif;
+            }
+
+            #changingText {
+                color: black;
+                border-right: 2px solid black;
+                animation: cursoranim 1s linear infinite;
+            }
+
+            @keyframes cursoranim {
+                50% {
+                    border-right: 1px solid rgba(0, 0, 0, 0);
+                }
+            }
+
+            :root {
+                --theme-color:yellow;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            .slick-dots li button:before {
+                font-size: 43px;
+                padding:13px 0;
+            }
+
+            .overlay {
+                background-color: rgba(120, 120, 120, 0.9);
+                justify-content: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 9;
+            }
+
+            .loader {
+                animation: loader 0.6s infinite linear;
+            }
+
+            @keyframes loader {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .container {
+                padding: 0 30px;
+            }
+
+            .active {
+                background-color: white;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                animation: slidedown 0.5s linear;
+                z-index: 9;
+            }
+
+            @keyframes slidedown {
+                0% {
+                    transform: translateY(-100%);
+                }
+            }
+    </style>
+</head>
+
+<body class="font-custom">
+
+    <div class="overlay flex items-center">
+        <div
+            class="loader w-[70px] h-[70px] rounded-full border-8 border-solid border-white border-t-solid border-t-indigo-600">
+        </div>
+    </div>
+
+    <div class="switch">
+        <i class="ri-palette-fill"></i>
+        <ul>
+            <li class="bg-red"></li>
+            <li class="bg-black"></li>
+        </ul>
+    </div>
+
+    <header class="bg-gray top lg:py-4 py-4 relative">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <div>
+                    <img src="img/logo.png" title="logo" alt="logo" />
+                </div>
+                <nav
+                    class="absolute top-[100%] left-0 right-0 bg-white lg:bg-transparent z-10 hidden lg:block lg:static">
+                    <ul class="lg:flex flex-col lg:flex-row lg:static">
+                        <li class="font-bold text-sm px-5 py-2">
+                            <a href="#1" class="text-blue">HOME</a>
+                        </li>
+                        <li class="font-semibold text-sm px-5 py-2 hover:text-blue">
+                            <a href="#2">FEATURE</a>
+                        </li>
+                        <li class="font-semibold text-sm px-5 py-2 hover:text-blue">
+                            <a href="#3">PRICE</a>
+                        </li>
+                        <li class="font-semibold text-sm px-5 py-2 hover:text-blue">
+                            <a href="#4">TEAM</a>
+                        </li>
+                        <li class="font-semibold text-sm px-5 py-2 hover:text-blue">
+                            <a href="#5">REVIEW</a>
+                        </li>
+                        <li class="font-semibold text-sm px-5 py-2 hover:text-blue">
+                            <a href="#6">BLOG</a>
+                        </li>
+                        <li class="font-semibold text-sm px-5 pt-2 pb-3 hover:text-blue">
+                            <a href="javascript:joid(0)">CONTACT</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-9 h-9 stroke-blue border-solid border-blue rounded-full border p-2 hover:bg-blue hover:stroke-white transition-all">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-9 h-9 stroke-white bg-blue rounded-full border border-blue b p-2 mx-3">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                    </svg>
+                    <a href="javascript:void(0)"
+                        class="toggle border-solid border-blue rounded-full border px-[10px] py-[8px] text-sm text-blue sm:block lg:hidden">
+                        <i class="ri-menu-line"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="banner bg-gray pb-24 pt-16" id="1">
+            <div class="container mx-auto">
+                <div class="flex flex-wrap">
+                    <div class="md:w-1/2 w-full">
+                        <div class="benner-items lg:mt-32 mt-5">
+                            <h1 class="font-mono lg:text-5xl text-3xl w-full max-w-[600px]">Resources for <span
+                                    class="text-blue font-bold leading-relaxed">makers &
+                                    Creative</span> to <span id="changingText"></span></h1>
+                            <p class="text-lg py-8 text-light-gray">Launch your campaign and benefit from our expertise
+                                on designing and managing conversion centered Tailwind CSS v3.x html page.</p>
+                            <form class="relative">
+                                <input placeholder="Your Email Address :"
+                                    class="py-3 w-3/4 px-5 rounded-3xl shadow-xl" />
+                                <button
+                                    class="bg-blue text-white py-2 rounded-3xl px-3 absolute top-0 right-[26%] mt-1">Try
+                                    it for free<i class="ri-arrow-right-line ps-2"></i></button>
+                            </form>
+                            <p class="mt-4">Looking for help? <a href="javascript:void(0)" class="text-blue">Get in
+                                    touch with us</a></p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 w-full">
+                        <div class="banner-items md:ms-28 ms-0 mx-16 relative pt-14 lg:pt-0">
+                            <img src="img/banner.jpg" title="banner" alt="banner"
+                                class="w-[450px]  lg:h-[540px] md:h-[370px] sm:h-[470px] rounded-md shadow-md " />
+                            <img src="img/banner-2.jpg" title="banner-1" alt="banner-1"
+                                class="lg:h-[400px] absolute -bottom-[70px] -right-14 md:-right-14 md:h-[300px] sm:h-[380px]  border border-8 rounded-md border-white" />
+                            <a href="https://www.youtube.com/watch?v=S_CGed6E610" class="text-2xl text-blue">
+                                <i
+                                    class="ri-play-mini-fill absolute lg:top-[50px] top-24 2xl:right-20 xl:-right-8 lg:-right-9 md:-right-10 -right-10 bg-white px-6 py-5 shadow-lg rounded-full"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPANY -->
+        <div class="company py-10">
+            <div class="container mx-auto">
+                <div class="flex flex-wrap">
+                    <div class="md:w-1/6 w-1/2">
+                        <div class="company-items xl:px-16 lg:px-10 md:px-7 px-24 py-8 md:py-0">
+                            <img src="img/img-1.svg" title="img-1" alt="img-1" />
+                        </div>
+                    </div>
+                    <div class="md:w-1/6 w-1/2">
+                        <div class="company-items xl:px-16 lg:px-10 md:px-7 px-24 py-8 md:py-0">
+                            <img src="img/img-2.svg" title="img-1" alt="img-1" />
+                        </div>
+                    </div>
+                    <div class="md:w-1/6 w-1/2">
+                        <div class="company-items xl:px-16 lg:px-10 md:px-7 px-24 py-8 md:py-0">
+                            <img src="img/img-3.svg" title="img-1" alt="img-1" />
+                        </div>
+                    </div>
+                    <div class="md:w-1/6 w-1/2">
+                        <div class="company-items xl:px-16 lg:px-10 md:px-7 px-24 py-8 md:py-0">
+                            <img src="img/img-4.svg" title="img-1" alt="img-1" />
+                        </div>
+                    </div>
+                    <div class="md:w-1/6 w-1/2">
+                        <div class="company-items xl:px-16 lg:px-10 md:px-7 px-24 py-8 md:py-0">
+                            <img src="img/img-5.svg" title="img-1" alt="img-1" />
+                        </div>
+                    </div>
+                    <div class="md:w-1/6 w-1/2">
+                        <div class="company-items xl:px-16 lg:px-10 md:px-7 px-24 py-8 md:py-0">
+                            <img src="img/img-6.svg" title="img-1" alt="img-1" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEATURES -->
+
+        <div class="features my-16" id="2">
+            <div class="container mx-auto">
+                <div class="w-full max-w-[500px] text-center mx-auto">
+                    <h4 class="text-blue text-sm font-bold">FEATURES</h4>
+                    <h3 class="text-3xl py-5 leading-[44px]">Business strategies and top permormance ideas</h3>
+                    <p class="text-light-gray text-md mb-16">Start working with Tailwind CSS that can provide everything
+                        you need to generate awareness, drive traffic, connect.</p>
+                </div>
+            </div>
+            <div class="features-inner">
+                <div class="container mx-auto">
+                    <div class="flex flex-wrap">
+                        <div class="lg:w-1/3 md:w-1/2 sm:w-full">
+                            <div class="features-items text-center px-16">
+                                <i
+                                    class="ri-time-line text-blue block text-3xl p-6 rounded-lg rotate-[15deg] shadow-md mb-6 inline-block bg-dark-gray"></i>
+                                <a href="javascript:void(0)" class="text-lg block">Profitable Marketing</a>
+                                <p class="text-light-gray text-[15px] py-4">We develop digital strategies, products and
+                                    services appreciated by clients.</p>
+                                <a href="javascript:void(0)"
+                                    class="text-sm hover:text-blue hover:border-b hover:pb-1 transition-all">Read More<i
+                                        class="ri-arrow-right-line ps-2"></i></a>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/3 md:w-1/2 sm:w-full">
+                            <div class="features-items text-center px-16 sm:pt-8 md:pt-0">
+                                <i
+                                    class="ri-briefcase-3-line text-blue block text-3xl p-6 rounded-lg rotate-[15deg] shadow-md mb-6 inline-block bg-dark-gray"></i>
+                                <a href="javascript:void(0)" class="text-lg block">SEO Specialists</a>
+                                <p class="text-light-gray text-[15px] py-4">We develop digital strategies, products and
+                                    services appreciated by clients.</p>
+                                <a href="javascript:void(0)"
+                                    class="text-sm hover:text-blue hover:border-b hover:pb-1 transition-all">Read More<i
+                                        class="ri-arrow-right-line ps-2"></i></a>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/3 md:w-1/2 sm:w-full">
+                            <div class="features-items text-center px-16 md:pt-9 lg:pt-0 sm:pt-8">
+                                <i
+                                    class="ri-creative-commons-sa-line text-blue p-6 rounded-lg rotate-[15deg] shadow-md mb-6 inline-block bg-dark-gray text-3xl"></i>
+                                <a href="javascript:void(0)" class="text-lg block font-medium">Audience Analysis</a>
+                                <p class="text-light-gray text-[15px] py-4">We develop digital strategies, products and
+                                    services appreciated by clients.</p>
+                                <a href="javascript:void(0)"
+                                    class="text-sm hover:text-blue hover:border-b hover:pb-1 transition-all">Read More<i
+                                        class="ri-arrow-right-line ps-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPERTS -->
+
+        <div class="expert py-6">
+            <div class="container mx-auto">
+                <div class="flex flex-wrap items-center">
+                    <div class="md:w-1/2 w-full">
+                        <div class="expert-items relative">
+                            <img src="img/about-1.png" title="about-1" alt="about-1"
+                                class="lg:w-[500px] lg:h-[500px] md:w-[450px] md:h-[400px]" />
+                            <a href="https://www.youtube.com/watch?time_continue=2&v=S_CGed6E610&embeds_referring_euri=https%3A%2F%2Fshreethemes.in%2F&embeds_referring_origin=https%3A%2F%2Fshreethemes.in&feature=emb_title&themeRefresh=1"
+                                class="text-2xl text-blue">
+                                <i
+                                    class="ri-play-mini-fill absolute top-[50%] left-[50%] -translate-x-2/4 -translate-y-2/4 bg-white px-6 py-5 shadow-xl rounded-full"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 w-full">
+                        <div class="expert-items w-full max-w-[530px] lg:ms-10 md:ms-10 sm:ms-3 md:pt-0 pt-5">
+                            <h2 class="text-3xl w-full max-w-[300px] leading-10 pb-9">We are the largest
+                                Business expert</h2>
+                            <p class="text-light-gray">Start working with Tailwind CSS that can provide everything you
+                                need to generate awareness, drive traffic, connect. Dummy text is text that is used in
+                                the publishing industry or by web designers to occupy the space which will later be
+                                filled with 'real' content. This is required when, for example, the final text is not
+                                yet available. Dummy texts have been in use by typesetters since the 16th century.</p>
+                            <a href="javascript:void(0)"
+                                class="text-white bg-blue py-2 px-5 inline-block text-md rounded-lg mt-6 hover:-translate-y-1 transition-all">Buy
+                                Now<i class="ri-arrow-drop-right-line text-xl items-center"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Features -->
+
+        <div class="key-features">
+            <div class="container mx-auto">
+                <div class="w-full max-w-[500px] text-center mx-auto">
+                    <h3 class="text-3xl py-5 leading-[44px]">Key Features</h3>
+                    <p class="text-light-gray text-md mb-16">Start working with Tailwind CSS that can provide everything
+                        you need to generate awareness, drive traffic, connect.</p>
+                </div>
+            </div>
+            <div class="key-inner">
+                <div class="container mx-auto">
+                    <div class="key-items">
+                        <ul class="flex flex-wrap">
+                            <li
+                                class="w-full md:w-1/2 lg:w-1/3 my-4 shadow-md rounded-lg py-3 ps-4 hover:scale-[1.1] hover:shadow-lg transition-all">
+                                <i class="ri-computer-line text-blue py-3 px-3 me-2 rounded-full"
+                                    style="background: rgb(79 70 229 / 0.1);"></i>
+                                Fully Responsive
+                            </li>
+                            <li
+                                class="w-full md:w-1/2 lg:w-1/3 my-4  shadow-md rounded-lg py-4 ps-4 hover:scale-[1.1] hover:shadow-lg transition-all">
+                                <i class="ri-heart-3-line text-blue py-3 px-3 me-2 rounded-full"
+                                    style="background: rgb(79 70 229 / 0.1);"></i>
+                                Browser Compatibility
+                            </li>
+                            <li
+                                class="w-full md:w-1/2 lg:w-1/3 my-4  shadow-md rounded-lg py-4 ps-4 hover:scale-[1.1] hover:shadow-lg transition-all">
+                                <i class="ri-eye-line text-blue py-3 px-3 me-2 rounded-full"
+                                    style="background: rgb(79 70 229 / 0.1);"></i>
+                                Retina Ready
+                            </li>
+                            <li
+                                class="w-full md:w-1/2 lg:w-1/3 my-4  shadow-md rounded-lg py-4 ps-4 hover:scale-[1.1] hover:shadow-lg transition-all">
+                                <i class="ri-book-read-line text-blue py-3 px-3 me-2 rounded-full"
+                                    style="background: rgb(79 70 229 / 0.1);"></i>
+                                Based On Tailwindcss 3
+                            </li>
+                            <li
+                                class="w-full md:w-1/2 lg:w-1/3 my-4  shadow-md rounded-lg py-4 ps-4 hover:scale-[1.1] hover:shadow-lg transition-all">
+                                <i class="ri-quill-pen-line text-blue py-3 px-3 me-2 rounded-full"
+                                    style="background: rgb(79 70 229 / 0.1);"></i>
+                                Feather Icons
+                            </li>
+                            <li
+                                class="w-full md:w-1/2 lg:w-1/3 my-4  shadow-md rounded-lg py-4 ps-4 hover:scale-[1.1] hover:shadow-lg transition-all">
+                                <i class="ri-code-line text-blue py-3 px-3 me-2 rounded-full"
+                                    style="background: rgb(79 70 229 / 0.1);"></i>
+                                Built With SASS
+                            </li>
+                            <li
+                                class="w-full md:w-1/2 lg:w-1/3 my-4  shadow-md rounded-lg py-4 ps-4 hover:scale-[1.1] hover:shadow-lg transition-all">
+                                <i class="ri-contacts-line text-blue py-3 px-3 me-2 rounded-full"
+                                    style="background: rgb(79 70 229 / 0.1);"></i>
+                                W3c Valid Code
+                            </li>
+                            <li
+                                class="w-full md:w-1/2 lg:w-1/3 my-4  shadow-md rounded-lg py-4 ps-4 hover:scale-[1.1] hover:shadow-lg transition-all">
+                                <i class="ri-global-line text-blue py-3 px-3 me-2 text-xl rounded-full"
+                                    style="background: rgb(79 70 229 / 0.1);"></i>
+                                Browsers Compatible
+                            </li>
+                            <li
+                                class="w-full md:w-1/2 lg:w-1/3 my-4  shadow-md rounded-lg py-4 ps-4 hover:scale-[1.1] hover:shadow-lg transition-all">
+                                <i class="ri-settings-2-line text-blue py-3 px-3 me-2 rounded-full"
+                                    style="background: rgb(79 70 229 / 0.1);"></i>
+                                Easy to customize
+                            </li>
+                        </ul>
+                        <div class="text-center py-4">
+                            <a href="javascript:void(0)" class="text-blue hover:border-b">See More <i
+                                    class="ri-arrow-right-s-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team -->
+
+        <div class="team mt-80">
+            <div class="container mx-auto">
+                <div class="team-img relative">
+                    <img src="img/team.jpg" title="team" alt="team"
+                        class="absolute top-[50%] left-[50%] w-[900px] -translate-x-2/4 -translate-y-2/4 rounded-md shadow-xl" />
+                    <a href="https://www.youtube.com/watch?v=S_CGed6E610&t=5s" class="text-2xl text-blue">
+                        <i
+                            class="ri-play-mini-fill absolute top-[50%] left-[50%] -translate-x-2/4 -translate-y-2/4 bg-white px-6 py-5 shadow-xl rounded-full"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="team-inner bg-indigo-600 md:pt-72 pt-48 pb-20">
+            <div class="container mx-auto">
+                <div class="flex flex-wrap justify-evenly">
+                    <div class="md:w-1/2 w-full">
+                        <div class="team-items md:text-left text-center">
+                            <h3 class="text-gray-theme text-lg mb-3 2xl:ps-56 xl:ps-40 lg:ps-24 md:ps-8">Team</h3>
+                            <h2 class="text-white mx-auto text-3xl w-full max-w-[300px] leading-10">Meet Experience
+                                Team Member</h2>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 w-full">
+                        <div class="team-items md:text-left text-center">
+                            <p class="text-gray-theme w-full max-w-[460px] my-3">
+                                Start working with Techwind that can provide everything you need to generate awareness,
+                                drive traffic, connect.
+                            </p>
+                            <a href="javascript:void(0)" class="text-white">Read More <i
+                                    class="ri-arrow-right-s-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OUR-RATES -->
+
+        <div class="our-rates pt-16 pb-20" id="3">
+            <div class="container mx-auto">
+                <div class="flex flex-wrap items-center">
+                    <div class="w-full lg:w-1/3">
+                        <div class="rates-title lg:text-left text-center">
+                            <h2 class="text-3xl mb-6">Our Comfortable Rates</h2>
+                            <p class="w-full max-w-[450px] mx-auto text-light-gray text-md">Start working with Tailwind
+                                CSS that
+                                can
+                                provide everything you need to generate awareness, drive traffic, connect.</p>
+                            <a href="javascript:void(0)"
+                                class="bg-blue text-white py-2 px-4 inline-block rounded-md mt-9"><i
+                                    class="ri-links-fill"></i> Subscribe Now</a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 lg:w-1/3">
+                        <div class="ms-0 rates-items bg-white shadow-lg rounded-xl mt-14 py-10 ps-10 pe-36">
+                            <h3 class="text-blue text-xl text-bold" style="font-size: 18px;">STARTER</h3>
+                            <h4 class="text-xl my-5"><sup class="text-xl">$</sup> <span class="text-5xl">39</span>/mo
+                            </h4>
+                            <ul>
+                                <li class="text-light-gray mb-2">
+                                    <i class="ri-checkbox-circle-line text-blue text-xl me-2"></i> Full Access
+                                </li>
+                                <li class="text-light-gray mb-2">
+                                    <i class="ri-checkbox-circle-line text-blue text-xl me-2"></i> Source Files
+                                </li>
+                                <li class="text-light-gray mb-2">
+                                    <i class="ri-checkbox-circle-line text-blue text-xl me-2"></i> Free Appointments
+                                </li>
+                                <li class="text-light-gray mb-2">
+                                    <i class="ri-checkbox-circle-line text-blue text-xl me-2"></i> Enhanced Security
+                                </li>
+                                <a href="javascript:void(0)"
+                                    class="bg-blue text-white font-medium py-3 px-6 inline-block rounded-md mt-6"></i>
+                                    Get Started</a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 lg:w-1/3">
+                        <div class="rates-items bg-white shadow-lg rounded-xl mt-8 py-10 ps-10 pe-10">
+                            <h3 class="text-blue text-md text-bold" style="font-size: 18px;">PROFESSIONAL</h3>
+                            <h4 class="text-xl my-5"><sup class="text-xl">$</sup><span class="text-4xl">59</span>/mo
+                            </h4>
+                            <ul>
+                                <li class="text-light-gray mb-2">
+                                    <i class="ri-checkbox-circle-line text-blue text-xl me-2"></i> Full Access
+                                </li>
+                                <li class="text-light-gray mb-2">
+                                    <i class="ri-checkbox-circle-line text-blue text-xl me-2"></i> Source Files
+                                </li>
+                                <li class="text-light-gray mb-2">
+                                    <i class="ri-checkbox-circle-line text-blue text-xl me-2"></i> Free Appointments
+                                </li>
+                                <li class="text-light-gray mb-2">
+                                    <i class="ri-checkbox-circle-line text-blue text-xl me-2"></i> Enhanced Security
+                                </li>
+                                <a href="javascript:void(0)"
+                                    class="bg-blue text-white font-medium py-2 px-6 inline-block rounded-md mt-6"></i>
+                                    Try it Now</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OUR-TEAM -->
+
+        <div class="our-team bg-dark-gray py-24" id="4">
+            <div class="container mx-auto">
+                <div class="text-center">
+                    <h2 class="text-3xl pb-9">Our Professional Team</h2>
+                    <p class="text-light-gray w-full max-w-[510px] mx-auto">Start working with Tailwind CSS that can
+                        provide everything you need to generate awareness, drive traffic, connect.</p>
+                </div>
+                <div class="our-inner mt-16">
+                    <div class="flex flex-wrap justify-evenly">
+                        <div class="lg:w-1/4 md:w-1/2 w-full">
+                            <div class="our-items text-center mt-6 md:mt-0">
+                                <img src="img/team-1.jpg" title="team-1" alt="team-1"
+                                    class="w-52 rounded-full mx-auto" />
+                                <h2 class="text-lg mt-5">Jack John</h2>
+                                <p class="text-light-gray">Designer</p>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/4 md:w-1/2 w-full">
+                            <div class="our-items text-center mt-6 md:mt-0">
+                                <img src="img/team-2.jpg" title="team-1" alt="team-1"
+                                    class="w-52 rounded-full mx-auto" />
+                                <h2 class="text-lg mt-5">Jack John</h2>
+                                <p class="text-light-gray">Designer</p>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/4 md:w-1/2 w-full">
+                            <div class="our-items text-center lg:mt-0 mt-6">
+                                <img src="img/team-3.jpg" title="team-1" alt="team-1"
+                                    class="w-52 rounded-full mx-auto" />
+                                <h2 class="text-lg mt-5">Jack John</h2>
+                                <p class="text-light-gray">Designer</p>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/4 md:w-1/2 w-full">
+                            <div class="our-items text-center lg:mt-0 mt-6">
+                                <img src="img/team-4.jpg" title="team-1" alt="team-1"
+                                    class="w-52 rounded-full mx-auto" />
+                                <h2 class="text-lg mt-5">Jack John</h2>
+                                <p class="text-light-gray">Designer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- our-users -->
+
+        <div class="our-users my-24" id="5">
+            <div class="container mx-auto">
+                <div class="text-center">
+                    <h2 class="text-3xl pb-8">What Our Users Say</h2>
+                    <p class="text-light-gray w-full max-w-[510px] mx-auto text-lg">Start working with Tailwind CSS that
+                        can
+                        provide everything you need to generate awareness, drive traffic, connect.</p>
+                </div>
+                <div class="slider responsive my-16">
+                    <div class="users-inner mx-4">
+                        <div class="users-items shadow-xl py-7 px-9 text-center">
+                            <i class="ri-double-quotes-l text-blue text-4xl"></i>
+                            <p class="text-light-gray text-[17px] mt-4 mb-4">"one disadvantage of Lorum Ipsum is that in
+                                Latin certain letters appear more frequently than others.</p>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                        </div>
+                        <div class="users-img text-center">
+                            <img src="img/users-1.jpg" title="users-1" alt="users-1"
+                                class="w-16 rounded-full mx-auto mt-6" />
+                            <h2 class="mt-2 text-lg">Jemina CLone</h2>
+                            <p class="text-light-gray text-sm">Manager</p>
+                        </div>
+                    </div>
+                    <div class="users-inner mx-4">
+                        <div class="users-items shadow-xl py-7 px-9 text-center">
+                            <i class="ri-double-quotes-l text-blue text-4xl"></i>
+                            <p class="text-light-gray text-[17px] mt-4 mb-4">"one disadvantage of Lorum Ipsum is that in
+                                Latin certain letters appear more frequently than others.</p>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                        </div>
+                        <div class="users-img text-center">
+                            <img src="img/users-2.jpg" title="users-2" alt="users-2"
+                                class="w-16 rounded-full mx-auto mt-6" />
+                            <h2 class="mt-2 text-lg">Jemina CLone</h2>
+                            <p class="text-light-gray text-sm">Manager</p>
+                        </div>
+                    </div>
+                    <div class="users-inner mx-4">
+                        <div class="users-items shadow-xl py-7 px-9 text-center">
+                            <i class="ri-double-quotes-l text-blue text-4xl"></i>
+                            <p class="text-light-gray text-[17px] mt-4 mb-4">"one disadvantage of Lorum Ipsum is that in
+                                Latin certain letters appear more frequently than others.</p>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                        </div>
+                        <div class="users-img text-center">
+                            <img src="img/users-3.jpg" title="users-3" alt="users-3"
+                                class="w-16 rounded-full mx-auto mt-6" />
+                            <h2 class="mt-2 text-lg">Jemina CLone</h2>
+                            <p class="text-light-gray text-sm">Manager</p>
+                        </div>
+                    </div>
+                    <div class="users-inner mx-4">
+                        <div class="users-items shadow-xl py-7 px-9 text-center">
+                            <i class="ri-double-quotes-l text-blue text-4xl"></i>
+                            <p class="text-light-gray text-[17px] mt-4 mb-4">"one disadvantage of Lorum Ipsum is that in
+                                Latin certain letters appear more frequently than others.</p>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                        </div>
+                        <div class="users-img text-center">
+                            <img src="img/users-4.jpg" title="users-4" alt="users-4"
+                                class="w-16 rounded-full mx-auto mt-6" />
+                            <h2 class="mt-2 text-lg">Jemina CLone</h2>
+                            <p class="text-light-gray text-sm">Manager</p>
+                        </div>
+                    </div>
+                    <div class="users-inner mx-4">
+                        <div class="users-items shadow-xl py-7 px-9 text-center">
+                            <i class="ri-double-quotes-l text-blue text-4xl"></i>
+                            <p class="text-light-gray text-[17px] mt-4 mb-4">"one disadvantage of Lorum Ipsum is that in
+                                Latin certain letters appear more frequently than others.</p>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                        </div>
+                        <div class="users-img text-center">
+                            <img src="img/users-5.jpg" title="users-5" alt="users-5"
+                                class="w-16 rounded-full mx-auto mt-6" />
+                            <h2 class="mt-2 text-lg">Jemina CLone</h2>
+                            <p class="text-light-gray text-sm">Manager</p>
+                        </div>
+                    </div>
+                    <div class="users-inner mx-4">
+                        <div class="users-items shadow-xl py-7 px-9 text-center">
+                            <i class="ri-double-quotes-l text-blue text-4xl"></i>
+                            <p class="text-light-gray text-[17px] mt-4 mb-4">"one disadvantage of Lorum Ipsum is that in
+                                Latin certain letters appear more frequently than others.</p>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                            <i class="ri-star-fill text-orange"></i>
+                        </div>
+                        <div class="users-img text-center">
+                            <img src="img/users-6.jpg" title="users-6" alt="users-6"
+                                class="w-16 rounded-full mx-auto mt-6" />
+                            <h2 class="mt-2 text-lg">Jemina CLone</h2>
+                            <p class="text-light-gray text-sm">Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOGS -->
+
+        <div class="blogs bg-dark-gray py-24" id="6">
+            <div class="container mx-auto">
+                <div class="flex flex-wrap justify-between items-center">
+                    <div class="blogs-title sm:w-full">
+                        <h5 class="text-blue mb-2">BLOGS</h5>
+                        <h2 class="text-3xl w-full max-w-[260px]" style="line-height:48px ;">Reads Our Latest
+                            News & Blog</h2>
+                    </div>
+                    <div class="sm:w-full">
+                        <p class="text-light-gray w-full max-w-[500px] text-md">Start working with Techwind that can
+                            provide everything you need to generate awareness, drive traffic, connect.</p>
+                    </div>
+                </div>
+                <div class="blogs-inner pt-10">
+                    <div class="flex flex-wrap">
+                        <div class="lg:w-1/3 md:w-1/2">
+                            <div class="blogs-items shadow-lg mx-4">
+                                <img src="img/blogs-1.jpg" title="blogs-1" alt="blogs" class="w-full rounded-t-md " />
+                                <div class="blogs-contant bg-dark-gray p-6 rounded-b-md">
+                                    <a href="javascript:void(0)" class="text-lg">Design your apps in your own way</a>
+                                    <p class="text-md text-light-gray w-full max-w-[280px] py-4">The phrasal sequence of
+                                        the is now so that many campaign and benefit</p>
+                                    <a href="javascript:void(0)"
+                                        class="text-md hover:text-blue hover:border-b hover:pb-1 transition-all">Read
+                                        More<i class="ri-arrow-right-line ps-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/3 md:w-1/2">
+                            <div class="blogs-items shadow-lg mx-4 sm:mt-8 md:mt-0">
+                                <div class="blogs-img">
+                                    <img src="img/blogs-2.jpg" title="blogs-1" alt="blogs"
+                                        class="w-full rounded-t-md block" />
+                                </div>
+                                <div class="blogs-contant bg-dark-gray p-6 rounded-b-xl">
+                                    <a href="javascript:void(0)" class="text-lg">Design your apps in your own way</a>
+                                    <p class="text-md text-light-gray w-full max-w-[280px] py-4">The phrasal sequence of
+                                        the is now so that many campaign and benefit</p>
+                                    <a href="javascript:void(0)"
+                                        class="text-md hover:text-blue hover:border-b hover:pb-1 transition-all">Read
+                                        More<i class="ri-arrow-right-line ps-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/3 md:w-1/2">
+                            <div class="blogs-items shadow-lg mx-4 md:mt-8 lg:mt-0 sm:mt-8">
+                                <img src="img/blogs-3.jpg" title="blogs-1" alt="blogs" class="w-full rounded-t-md " />
+                                <div class="blogs-contant bg-dark-gray p-6 rounded-b-md">
+                                    <a href="javascript:void(0)" class="text-lg">Design your apps in your own way</a>
+                                    <p class="text-md text-light-gray w-full max-w-[280px] py-4">The phrasal sequence of
+                                        the is now so that many campaign and benefit</p>
+                                    <a href="javascript:void(0)"
+                                        class="text-md hover:text-blue hover:border-b hover:pb-1 transition-all">Read
+                                        More<i class="ri-arrow-right-line ps-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer bg-dark-blue">
+            <div class="container mx-auto">
+                <div class="footer-inner py-24">
+                    <div class="flex flex-wrap justify-between">
+                        <div class="lg:w-1/4 w-full">
+                            <div class="footer-items pb-8">
+                                <a href="javascript:void(0)"><img src="img/footer-logo.png" title="logo" alt="logo"
+                                        class="text-[60px] mb-6" /></a>
+                                <p class="text-gray-theme pb-5 w-full lg:max-w-[300px] leading-7">Start working with
+                                    Tailwind CSS that can provide everything you need to generate awareness, drive
+                                    traffic, connect.</p>
+                                <i
+                                    class="ri-shopping-cart-2-line text-dark-gray p-2 border border-solid border-light-white rounded hover:bg-blue transition-all"></i>
+                                <i
+                                    class="ri-global-line text-dark-gray p-2 border border-solid border-light-white rounded hover:bg-blue transition-all"></i>
+                                <i
+                                    class="ri-behance-line text-dark-gray p-2 border border-solid border-light-white rounded hover:bg-blue transition-all"></i>
+                                <i
+                                    class="ri-linkedin-line text-dark-gray p-2 border border-solid border-light-white rounded hover:bg-blue transition-all"></i>
+                                <i
+                                    class="ri-facebook-fill text-dark-gray p-2 border border-solid border-light-white rounded hover:bg-blue transition-all"></i>
+                                <i
+                                    class="ri-instagram-line text-dark-gray p-2 border border-solid border-light-white rounded hover:bg-blue transition-all"></i>
+                                <i
+                                    class="ri-twitter-fill text-dark-gray p-2 border border-solid border-light-white rounded hover:bg-blue transition-all"></i>
+                                <i
+                                    class="ri-mail-line text-dark-gray p-2 border border-solid border-light-white rounded hover:bg-blue transition-all"></i>
+                                <i
+                                    class="ri-file-3-line text-dark-gray p-2 border border-solid border-light-white rounded hover:bg-blue transition-all"></i>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/4 w-full">
+                            <div class="company text-gray-theme lg:px-14 md:px-0 md:pb-5 pb-8">
+                                <h2 class="text-lg mb-4 text-white">Company</h2>
+                                <ul>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>About us</a>
+                                    </li>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Services</a>
+                                    </li>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Team</a>
+                                    </li>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Pricing</a>
+                                    </li>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Projects</a>
+                                    </li>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Blog</a>
+                                    </li>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Login</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/4 w-full">
+                            <div class="company text-gray-theme md:pb-5 pb-8">
+                                <h2 class="text-lg mb-4 text-white">Uesfull Link</h2>
+                                <ul>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Terms of Services</a>
+                                    </li>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Privacy Policy</a>
+                                    </li>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Documention</a>
+                                    </li>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Changelog</a>
+                                    </li>
+                                    <li class="py-1">
+                                        <a href="javascript:void(0)" class="text-md"><i
+                                                class="ri-arrow-right-s-line text-xl pe-2"></i>Widget</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/4 w-full">
+                            <div class="company text-gray-theme">
+                                <h2 class="text-xl mb-4 text-white">Newsletter</h2>
+                                <p class="my-3 text-md w-full ">Sign up and receive the latest tips via
+                                    email.</p>
+                                <form>
+                                    <label>Write your email *</label>
+                                    <input placeholder="Email"
+                                        class="py-2 rounded block ps-3 mt-3 text-md w-full bg-light-blue" />
+                                    <button class="bg-blue text-white py-2  rounded mt-3 w-full">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copy-right border-t border-light-white">
+                <div class="container mx-auto">
+                    <div class="flex flex-wrap justify-between items-center">
+                        <div class="md:py-7 pt-7">
+                            <p class="text-white text-md">© 2024 Techwind. Design with <i
+                                    class="ri-heart-fill text-red"></i> by
+                                Shreethemes.</p>
+                        </div>
+                        <div class="md:py-7 pt-2 pb-7">
+                            <div class="flex">
+                                <a href="javascript:void(0)" class="me-1">
+                                    <img src="img/1.png" title="1" alt="1" class="w-9" />
+                                </a>
+                                <a href="javascript:void(0)" class="me-1">
+                                    <img src="img/2.png" title="2" alt="2" class="w-9" />
+                                </a>
+                                <a href="javascript:void(0)" class="me-1">
+                                    <img src="img/3.png" title="3" alt="3" class="w-9" />
+                                </a>
+                                <a href="javascript:void(0)" class="me-1">
+                                    <img src="img/4.png" title="4" alt="4" class="w-9" />
+                                </a>
+                                <a href="javascript:void(0)" class="me-1">
+                                    <img src="img/5.png" title="5" alt="5" class="w-9" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back-To-Top -->
+
+    <a href="#top"
+        class="px-[11px] py-[7px] bg-blue text-white fixed z-10 right-0 bottom-0 rounded-full m-[25px] transition-all">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <script src="js/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="js/slick.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script>
+        $(window).on("load", function () {
+            $(".overlay").fadeOut(2000);
+        });
+    </script>
+    <script>
+        $(".toggle").click(function () {
+            $("nav").slideToggle(1000);
+        });
+    </script>
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 0) {
+                $("header").addClass("active");
+            } else {
+                $("header").removeClass("active");
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $(".switch i").click(function () {
+                $(".switch").toggleClass("slide");
+            });
+
+            $(".switch li").click(function () {
+                var color = $(this).css("background-color");
+                $(":root").css("--theme-color", color);
+            });
+
+        });
+    </script>
+    <script>
+        //you can change the text, but you need to keep same format [yourtext, color];
+        let yourtext = [
+            ["learn", "#000000"],
+            ["grow", "#000000"]
+        ];
+
+        let x = 0;
+        let y = 0;
+        //how fast typing is
+        let wait = 300;
+        //how long you want to text stay before overwriting
+        let additionalwait = 5;
+        let txt = yourtext[0][0].split("");
+        let out = "";
+        let retyping = setInterval(function () {
+            document.getElementById("changingText").innerHTML = out;
+            if (x > txt.length - 1) {
+            } else {
+                out += txt[x];
+            }
+            x++;
+            if (x == txt.length + 2 + additionalwait) {
+                if (y == yourtext.length - 1) {
+                    y = 0;
+                    txt = yourtext[y][0].split("");
+                    out = "";
+                    document.getElementById("changingText").innerHTML = out;
+                    document.getElementById("changingText").style.color = yourtext[y][1];
+                    x = 0;
+                } else {
+                    y += 1;
+                    txt = yourtext[y][0].split("");
+                    out = "";
+                    document.getElementById("changingText").innerHTML = out;
+                    document.getElementById("changingText").style.color = yourtext[y][1];
+                    x = 0;
+                }
+            }
+        }, wait);
+
+    </script>
+    <script>
+        $('.responsive').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+    </script>
+</body>
+
+</html>

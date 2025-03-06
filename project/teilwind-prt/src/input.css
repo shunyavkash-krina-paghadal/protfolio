@@ -1,0 +1,9 @@
+@font-face{
+    font-family: "Nunito", sans-serif;
+    
+    src:url('../font/Nunito_Sans/NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,0 +1,91 @@
+@media(max-width:1399px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .banner{
+        height: 500px !important;
+    }
+}
+
+@media(max-width:1199px) {
+    .container {
+        max-width: 960px;
+    }
+
+    header,
+    main,
+    footer {
+        width: 100% !important;
+    }
+
+    aside {
+        transform: translateX(-100%);
+        transition: 0.4s;
+    }
+
+    /* aside */
+
+    .side {
+        transform: translateX(0) !important;
+        width: 30%;
+        z-index: 99;
+        transition: 0.4s;
+    }
+
+    /* header */
+
+    .side-1 {
+        width: 70% !important;
+    }
+
+    
+
+}
+
+@media(max-width:991px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .col-md-12 {
+        width: 100%;
+    }
+    .side{
+        width: 35%;
+        transform: translateX(0);
+    }
+    .side-1{
+        width: 65%;
+    }
+    .work .wrok-img img{
+        height: 550px;
+    }
+}
+
+@media(max-width:767px) {
+    .container {
+        max-width: 540px;
+    }
+    .banner{
+        height: 450px !important;
+    }
+
+    .work .wrok-img img{
+        height: 450px;
+    }
+}
+
+@media(max-width:575px) {
+    .container {
+        max-width: 100%;
+    }
+    .banner{
+        height: 200px !important;
+    }
+
+    .work .wrok-img img{
+        height: 410px;
+    }
+
+}
